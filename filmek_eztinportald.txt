@@ -1,4 +1,7 @@
-Traktorosok;traktor;120;Nagy Kalman
-Autosok;Sundisznoetetes;150;Andras Gyorgy
-Zombi;Kutyagec;110;Bence Kedd;
-Sanyi az oroszlan;Beka;197;Nagy Kalman; 
+SPIDER-MAN: INTO THE SPIDER-VERSE;sci-fi;112;Hailee Steinfeld;
+A remeny rabjai;drama;137;Tim Robbins;
+Forrest Gump;szatira;141;Tom Hanks;
+Halalsoron;thriller;188;Tom Hanks; 
+Szerelmunk lapjai;romantikus;123;Rachel McAdams;
+Eletrevalok;vigjatek;107;Omar Sy;
+A Keresztapa;drama;175;Al Pacino;
