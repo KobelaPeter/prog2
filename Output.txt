@@ -1,0 +1,6 @@
+Kutya;Cica;25;Nagy Kalman;
+ZZZZ;asd;87;Gezu;
+Zombi;Kutyagec;110;Bence Kedd;
+Traktorosok;traktor;120;Nagy Kalman;
+Autosok;Sundisznoetetes;150;Andras Gyorgy;
+Sanyi az oroszlan;Beka;197;Nagy Kalman;

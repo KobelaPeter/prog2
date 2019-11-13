@@ -1,0 +1,4 @@
+Traktorosok;traktor;120;Nagy Kalman
+Autosok;Sundisznoetetes;150;Andras Gyorgy
+Zombi;Kutyagec;110;Bence Kedd;
+Sanyi az oroszlan;Beka;197;Nagy Kalman; 
