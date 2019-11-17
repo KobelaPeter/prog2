@@ -9,8 +9,10 @@ from PyQt5.QtWidgets import QMessageBox
 from magyarfilmek_minta import Ui_magyarfilmek
 from filmhozzaadas import BeszurAblak
 
+class Badtxt(Exception):
+    pass
 
-####################################################################################x
+
 class Magyarfilmek(QDialog, Ui_magyarfilmek):
     def __init__(self,parent=None):
         super(Magyarfilmek, self).__init__(parent)
@@ -20,11 +22,22 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
         self.torolGomb.clicked.connect(self.osszesfilmkiir.clear)
         self.frendezes.clicked.connect(self.rendezesFoszereplo)  #foszereplo alapjan rendezes
         self.jrendezes.clicked.connect(self.rendezesJatekido)  #jatekido alapjan rendezese
-
         self.ujfilmhozzaad.clicked.connect(self.hozzaadFilm)
         self.ujfilm.clicked.connect(self.fajlMegnyit) #txt bol menti be a tablazatba a filmeket
         self.kimentes.clicked.connect(self.filmekMenteseFajlba)  # kimenti txt filebe a beirt cuccokat
+
         self.filmek = []
+
+#########################################################################################
+
+    def betoltAdatok(self):
+        self.tablazat.setRowCount(len(self.filmek))
+        for i in range(len(self.filmek)):
+            for j in range(4):
+                cella = QtWidgets.QTableWidgetItem()
+                cella.setText(str(self.filmek[i][j]))
+                self.tablazat.setItem(i, j, cella)
+
 
 ###############################################################################################
 
@@ -36,20 +49,23 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
             lines = [line.rstrip('\n') for line in lines]
             for line in lines:
                 l = line.split(";")
+                print(len(l))
+                if len(l) != 5:
+                    raise Badtxt
                 d = ((l[0]),l[1],int((l[2])),(l[3]))
-                print("D: ",d)
+                print("Sor: ",d)
                 self.filmek.append(d)
             self.betoltAdatok()
-        except:
-            QMessageBox.about(self, "Kisebb problema adodott...", "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
 
-    def betoltAdatok(self):
-        self.tablazat.setRowCount(len(self.filmek))
-        for i in range(len(self.filmek)):
-            for j in range(4):
-                cella = QtWidgets.QTableWidgetItem()
-                cella.setText(str(self.filmek[i][j]))
-                self.tablazat.setItem(i, j, cella)
+        except Badtxt:
+            QMessageBox.about(self, "Kisebb problema adodott...",
+                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
+        except ValueError:
+            QMessageBox.about(self, "Kisebb problema adodott...",
+                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
+        except:
+            pass
+
 
 #######################################################################################################################
 
@@ -119,7 +135,6 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
 
 #################################################################################################
 
-#cleargombot irni!!!!!!!!!!
 app = QtWidgets.QApplication(sys.argv)
 form = Magyarfilmek()
 form.show()
