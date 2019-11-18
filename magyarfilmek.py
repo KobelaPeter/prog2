@@ -18,11 +18,11 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
         super(Magyarfilmek, self).__init__(parent)
         self.setupUi(self)
 
-        self.osszesfilmgomb.clicked.connect(self.osszeskiir) #kiirja az osszes filmet amiben a mellette megadott szuvegrublikas emberke a foszereplo
+        self.osszesfilmgomb.clicked.connect(self.osszeskiir) #kiirja az osszes filmet amiben o a foszereple
         self.torolGomb.clicked.connect(self.osszesfilmkiir.clear)
         self.frendezes.clicked.connect(self.rendezesFoszereplo)  #foszereplo alapjan rendezes
         self.jrendezes.clicked.connect(self.rendezesJatekido)  #jatekido alapjan rendezese
-        self.ujfilmhozzaad.clicked.connect(self.hozzaadFilm)
+        self.ujfilmhozzaad.clicked.connect(self.hozzaadFilm) #uj film hozzaadasa
         self.ujfilm.clicked.connect(self.fajlMegnyit) #txt bol menti be a tablazatba a filmeket
         self.kimentes.clicked.connect(self.filmekMenteseFajlba)  # kimenti txt filebe a beirt cuccokat
 
@@ -48,9 +48,11 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 lines = f.readlines()
             lines = [line.rstrip('\n') for line in lines]
             for line in lines:
+                if line[len(line)-1] == ';':
+                    line = line[:-1]
                 l = line.split(";")
                 print(len(l))
-                if len(l) != 5:
+                if len(l) != 4:
                     raise Badtxt
                 d = ((l[0]),l[1],int((l[2])),(l[3]))
                 print("Sor: ",d)
