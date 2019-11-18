@@ -26,8 +26,8 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
         self.ujfilm.clicked.connect(self.fajlMegnyit) #txt bol menti be a tablazatba a filmeket
         self.kimentes.clicked.connect(self.filmekMenteseFajlba)  # kimenti txt filebe a beirt cuccokat
 
-        self.filmek = []
-        self.megnyitottfilmek = [] # ha hibas filet kerunk be kell, hogy kiszedje a listabol
+        self.filmek = []  #osszes film a tablazatban
+        self.megnyitottfilmek = [] # aktualisan bekert file
 
 #########################################################################################
 
@@ -49,6 +49,8 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 lines = f.readlines()
             lines = [line.rstrip('\n') for line in lines]
             for line in lines:
+#                 while line[len(line)-1] == ' ':
+#                     line = line[:-1]
                 if line[len(line)-1] == ';':
                     line = line[:-1]
                 l = line.split(";")
@@ -64,12 +66,12 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
             self.betoltAdatok()
 
         except Badtxt:
-            QMessageBox.about(self, "Kisebb problema adodott...",
+            QMessageBox.about(self, "Hiba",
                               "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
             self.megnyitottfilmek = []
             
         except ValueError:
-            QMessageBox.about(self, "Kisebb problema adodott...",
+            QMessageBox.about(self, "Hiba",
                               "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!\n"
                               "(A Játékidő csak szám lehet!)")
             self.megnyitottfilmek = []
