@@ -58,19 +58,20 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 d = ((l[0]),l[1],int((l[2])),(l[3]))
                 print("Sor: ",d)
                 self.megnyitottfilmek.append(d)
-            self.filmek += self.megnyitottfilmek[:]
+                
+            self.filmek += self.megnyitottfilmek
             self.megnyitottfilmek = []
             self.betoltAdatok()
 
         except Badtxt:
             QMessageBox.about(self, "Kisebb problema adodott...",
-                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!\n
-                              (A Játékidő csak szám lehet!)")
+                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
             self.megnyitottfilmek = []
             
         except ValueError:
             QMessageBox.about(self, "Kisebb problema adodott...",
-                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
+                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!\n"
+                              "(A Játékidő csak szám lehet!)")
             self.megnyitottfilmek = []
             
         except:
