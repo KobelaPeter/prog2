@@ -59,6 +59,7 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 print("Sor: ",d)
                 self.megnyitottfilmek.append(d)
             self.filmek += self.megnyitottfilmek[:]
+            self.megnyitottfilmek = []
             self.betoltAdatok()
 
         except Badtxt:
