@@ -27,6 +27,7 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
         self.kimentes.clicked.connect(self.filmekMenteseFajlba)  # kimenti txt filebe a beirt cuccokat
 
         self.filmek = []
+        self.megnyitottfilmek = [] # ha hibas filet kerunk be kell, hogy kiszedje a listabol
 
 #########################################################################################
 
@@ -56,15 +57,21 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                     raise Badtxt
                 d = ((l[0]),l[1],int((l[2])),(l[3]))
                 print("Sor: ",d)
-                self.filmek.append(d)
+                self.megnyitottfilmek.append(d)
+            self.filmek += self.megnyitottfilmek[:]
             self.betoltAdatok()
 
         except Badtxt:
             QMessageBox.about(self, "Kisebb problema adodott...",
-                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
+                              "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!\n
+                              (A Játékidő csak szám lehet!)")
+            self.megnyitottfilmek = []
+            
         except ValueError:
             QMessageBox.about(self, "Kisebb problema adodott...",
                               "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
+            self.megnyitottfilmek = []
+            
         except:
             pass
 
