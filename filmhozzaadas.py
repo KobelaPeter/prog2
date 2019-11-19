@@ -28,7 +28,7 @@ class BeszurAblak(QDialog, Ui_Dialog):
             foszereplo = self.foszereplohozzaadas.text()
             print("foszereplo: ",foszereplo)
 
-            self.uj = (cim,mufaj,int(jatekido),foszereplo)
+            self.uj = (cim,mufaj,int(jatekido),foszereplo.capitalize())
         except:
             QMessageBox.about(self, "Error", "Hibas adatot adtal meg!")
 
