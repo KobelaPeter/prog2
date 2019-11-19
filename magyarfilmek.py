@@ -49,8 +49,8 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 lines = f.readlines()
             lines = [line.rstrip('\n') for line in lines]
             for line in lines:
-#                 while line[len(line)-1] == ' ':
-#                     line = line[:-1]
+                while line[len(line)-1] == ' ':
+                    line = line[:-1]
                 if line[len(line)-1] == ';':
                     line = line[:-1]
                 l = line.split(";")
