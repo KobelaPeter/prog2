@@ -66,7 +66,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "MainWindow"))
         self.label.setText(_translate("Dialog", "Cím:"))
         self.label_2.setText(_translate("Dialog", "Műfaj:"))
-        self.label_3.setText(_translate("Dialog", "Játékidő:"))
+        self.label_3.setText(_translate("Dialog", "Játékidő(perc):"))
         self.label_4.setText(_translate("Dialog", "Főszereplő:"))
         self.alkalmazGomb.setText(_translate("Dialog", "Beillesztes"))
         self.megseGomb.setText(_translate("Dialog", "Megse"))

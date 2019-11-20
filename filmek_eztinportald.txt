@@ -1,7 +1,7 @@
 SPIDER-MAN: INTO THE SPIDER-VERSE;sci-fi;112;Hailee Steinfeld;
 A remeny rabjai;drama;137;Tim Robbins;
 Forrest Gump;szatira;141;Tom Hanks;
-Halalsoron;thriller;188;Tom Hanks; 
+Halalsoron;thriller;188;Tom Hanks;
 Szerelmunk lapjai;romantikus;123;Rachel McAdams;
 Eletrevalok;vigjatek;107;Omar Sy;
 A Keresztapa;drama;175;Al Pacino;

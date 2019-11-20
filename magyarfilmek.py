@@ -13,22 +13,22 @@ class Badtxt(Exception):
     pass
 
 
+####################################################################################x
 class Magyarfilmek(QDialog, Ui_magyarfilmek):
     def __init__(self,parent=None):
         super(Magyarfilmek, self).__init__(parent)
         self.setupUi(self)
 
-        self.osszesfilmgomb.clicked.connect(self.osszeskiir) #kiirja az osszes filmet amiben o a foszereple
+        self.osszesfilmgomb.clicked.connect(self.osszeskiir) #kiirja az osszes filmet amiben a mellette megadott szuvegrublikas emberke a foszereplo
         self.torolGomb.clicked.connect(self.osszesfilmkiir.clear)
         self.frendezes.clicked.connect(self.rendezesFoszereplo)  #foszereplo alapjan rendezes
         self.jrendezes.clicked.connect(self.rendezesJatekido)  #jatekido alapjan rendezese
-        self.ujfilmhozzaad.clicked.connect(self.hozzaadFilm) #uj film hozzaadasa
+        self.ujfilmhozzaad.clicked.connect(self.hozzaadFilm)
         self.ujfilm.clicked.connect(self.fajlMegnyit) #txt bol menti be a tablazatba a filmeket
         self.kimentes.clicked.connect(self.filmekMenteseFajlba)  # kimenti txt filebe a beirt cuccokat
 
-        self.filmek = []  #osszes film a tablazatban
-        self.megnyitottfilmek = [] # aktualisan bekert file
-
+        self.filmek = []  #osszes filmet tarolja
+        self.megnyitottfilmek = [] # ha hibas filet kerunk be kell, hogy kiszedje a listabol
 #########################################################################################
 
     def betoltAdatok(self):
@@ -60,7 +60,6 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
                 d = ((l[0]),l[1],int((l[2])),(l[3]))
                 print("Sor: ",d)
                 self.megnyitottfilmek.append(d)
-                
             self.filmek += self.megnyitottfilmek
             self.megnyitottfilmek = []
             self.betoltAdatok()
@@ -69,13 +68,13 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
             QMessageBox.about(self, "Hiba",
                               "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!")
             self.megnyitottfilmek = []
-            
+
         except ValueError:
             QMessageBox.about(self, "Hiba",
                               "Hibas txt allomany,\nvagy nem adtal meg megfelelő fájlt!\n"
                               "(A Játékidő csak szám lehet!)")
             self.megnyitottfilmek = []
-            
+
         except:
             pass
 
@@ -148,7 +147,7 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
 
 #################################################################################################
 
-app = QtWidgets.QApplication(sys.argv)
-form = Magyarfilmek()
-form.show()
-sys.exit(app.exec_())
+# app = QtWidgets.QApplication(sys.argv)
+# form = Magyarfilmek()
+# form.show()
+# sys.exit(app.exec_())
