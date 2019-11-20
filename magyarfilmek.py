@@ -130,6 +130,7 @@ class Magyarfilmek(QDialog, Ui_magyarfilmek):
 
     def osszeskiir(self):
         tmp = ""
+        self.osszesfilmkiir.clear()
         foszereplo = self.osszesfilmbekeres.text()
         foszereplo = foszereplo.upper()
         foszereplo = foszereplo.replace(' ','')
