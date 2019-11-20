@@ -14,7 +14,7 @@ class FoAblak(QtWidgets.QMainWindow, Ui_MainWindow):
         self.szinkronosfilmek.clicked.connect(self.megnyitszinkronosfilmek)
         self.feliratosfilmek.clicked.connect(self.megnyitfeliratosfilmek)
 
-    def megnyitszinkronosfilmek(ss):
+    def megnyitszinkronosfilmek(self):
         global f
         f = Magyarfilmek()
         f.setModal(True)
